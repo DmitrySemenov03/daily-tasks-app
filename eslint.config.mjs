@@ -3,9 +3,11 @@ import globals from 'globals';
 import pluginReact from 'eslint-plugin-react';
 import pluginPrettier from 'eslint-plugin-prettier';
 import configPrettier from 'eslint-config-prettier';
-import { defineConfig } from 'eslint/config';
 
-export default defineConfig([
+export default [
+  js.configs.recommended, // базовые правила JS
+  pluginReact.configs.flat.recommended, // правила React
+  configPrettier, // отключает конфликты с Prettier
   {
     files: ['**/*.{js,mjs,cjs,jsx}'],
     languageOptions: {
@@ -15,13 +17,11 @@ export default defineConfig([
       react: pluginReact,
       prettier: pluginPrettier,
     },
-    extends: [
-      js.configs.recommended, // базовые правила JS
-      pluginReact.configs.flat.recommended, // правила для React
-      configPrettier, // отключает правила, конфликтующие с Prettier
-    ],
     rules: {
-      'prettier/prettier': 'error', // ошибки Prettier в консоль
+      'prettier/prettier': 'error',
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      'no-unused-vars': 'warn'
     },
   },
-]);
+];
