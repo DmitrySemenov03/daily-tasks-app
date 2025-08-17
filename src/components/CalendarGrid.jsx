@@ -13,13 +13,6 @@ function CalendarGrid({ year, month }) {
           isWeekend={day.isWeekend}
           isToday={day.isToday}
         />
-
-        // <div
-        //   key={index}
-        //   className={`calendar-cell ${day.isWeekend ? 'weekend' : ''} ${day.isToday ? 'today' : ''}`}
-        // >
-        //   {day.date || ''}
-        // </div>
       ))}
     </div>
   );

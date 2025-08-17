@@ -5,7 +5,9 @@ function DayCell({ date, isWeekend, isToday }) {
     <div
       className={`calendar-cell ${isWeekend ? 'weekend' : ''} ${isToday ? 'today' : ''} ${!date ? 'empty' : ''}`}
     >
-      {date && <span className="day-number">{date}</span>}
+      <div className="dateHighLight">
+        {date && <p className="day-number">{date}</p>}
+      </div>
     </div>
   );
 }

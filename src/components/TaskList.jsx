@@ -1,9 +1,9 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 
-function TaskList({ tasks, onToggleComplete }) {
+function TaskList({ tasks, onToggleComplete, deleteTask }) {
   if (tasks.length === 0) {
-    return <p className="emptyList">Задач нет</p>;
+    return <p className="emptyList">Oops, it&apos;s empty!</p>;
   }
 
   return (
@@ -13,6 +13,7 @@ function TaskList({ tasks, onToggleComplete }) {
           key={task.id}
           task={task}
           onToggleComplete={onToggleComplete}
+          deleteTask={deleteTask}
         />
       ))}
     </ul>

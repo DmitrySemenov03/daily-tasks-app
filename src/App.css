@@ -5,27 +5,30 @@
   padding: 10px;
   height: 5vh;
   align-items: center;
-  background-color: antiquewhite;
+  background-color: #2f2f2f;
+  color: #fff;
+  border-radius: 10px;
 }
 
 .main {
   margin: 10px;
   display: grid;
   grid-template-columns: 400px 1fr;
-  gap: 30px;
+  gap: 10px;
 }
 
 .leftPart {
-  background-color: rgb(162, 212, 212);
+  background-color: #262f7e;
+  border-radius: 10px;
+  border: 1px solid #444a88;
 }
 
 .taskListTitle {
-  background-color: darkcyan;
-  height: 40px;
+  background-color: #091056;
   color: white;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   padding: 5px 20px;
-  margin: 0 0 30px;
+  margin: 0 0 20px;
 }
 
 .taskList {
@@ -33,34 +36,136 @@
   padding: 0;
   list-style: none;
 }
-
-.task, .taskForm{
-  padding: 5px 10px;
+.taskListMain {
+  /* width: 100%; */
+  width: 95%;
+  margin: 0 auto;
+}
+.addTask {
+  background-color: #3d3d3d;
+  border: 1px solid #232323;
+  width: 100%;
+  height: 2rem;
+  text-align: left;
+  color: #a0a0a0;
+  font-size: 14px;
+  padding-left: 10px;
   border-radius: 10px;
-  background-color: rgb(207, 251, 249);
+  cursor: pointer;
+}
+.addTask:hover {
+  background-color: #505050;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 10px;
+  height: 2rem;
+  font-size: 14px;
+
+  border-radius: 10px;
+  margin: 10px 0;
+  background-color: #3d3d3d;
+  border: 1px solid #232323;
+  color: #a0a0a0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.taskForm {
+  background-color: #04072c;
+  padding: 10px;
+  border-radius: 10px;
   margin: 0 0 10px;
+  position: relative;
+  z-index: 1;
+  bottom: 2rem;
+}
+
+.form {
+  padding: 0 10px;
+  text-align: center;
 }
 
 .taskInput {
-  background-color: yellowgreen;
-  height: auto;
+  background-color: #595959;
+  margin: 0 0 10px;
+  height: 2rem;
+  width: 95%;
+  color: #a0a0a0;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #232323;
+  cursor: pointer;
+}
+
+.taskDescription {
+  background-color: #595959;
+  margin: 0 0 10px;
+  width: 95%;
+  color: #a0a0a0;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #232323;
+  cursor: pointer;
 }
 
 .rightPart {
-  padding: 20px;
-  background-color: wheat;
+  padding: 10px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, rgb(105, 61, 121), rgb(55, 31, 108)) ;
+  height: 80vh;
+}
+
+.calendarHeader {
+  color: #fff;
 }
 
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 100px);
 }
 .calendar-cell {
-  width: 80px;
-  height: 80px;
   margin: 2px;
   padding: 5px;
   border-radius: 10px;
   text-align: center;
-  background-color: rgb(246, 236, 218);
+  color: #fff;
+  background-color: rgba(23, 23, 23, 0.67);
+}
+.calendar-cell:hover {
+  border: 2px solid rgb(124, 34, 215);
+}
+
+.today {
+  font-weight: 700;
+}
+
+.today:hover {
+  border: 2px solid rgb(124, 34, 215);
+}
+
+.today .dateHighLight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: #5f267e;
+}
+
+.day-number {
+  margin: 0;
+}
+
+.emptyTitleError {
+  margin: 0 10px;
+  text-align: left;
+  color: red;
+  font-size: '0.8rem';
 }
