@@ -169,3 +169,41 @@
   color: red;
   font-size: '0.8rem';
 }
+
+
+
+
+
+/* Модалка в календаре */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: flex-end; 
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.dayModal {
+  background: #fff;
+  width: 350px;
+  margin: 20px; /* небольшой отступ со всех сторон */
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}

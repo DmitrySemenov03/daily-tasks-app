@@ -1,7 +1,13 @@
 import CalendarHeader from './CalendarHeader';
 import CalendarGrid from './CalendarGrid';
 
-function Calendar({ selectedDate }) {
+function Calendar({
+  selectedDate,
+  onDayClick,
+  isDayModalOpen,
+  dailyTasks,
+  onDayModalClose,
+}) {
   const monthNames = [
     'Январь',
     'Февраль',
@@ -26,7 +32,15 @@ function Calendar({ selectedDate }) {
   return (
     <>
       <CalendarHeader monthNames={monthNames[month + 1]} year={year} />
-      <CalendarGrid year={year} month={month} />
+      <CalendarGrid
+        year={year}
+        month={month}
+        onDayClick={onDayClick}
+        isDayModalOpen={isDayModalOpen}
+        dailyTasks={dailyTasks}
+        onDayModalClose={onDayModalClose}
+        selectedDate={selectedDate}
+      />
     </>
   );
 }

@@ -8,9 +8,9 @@ import { createTask } from './models/task';
 function App() {
   const today = new Date().toISOString().split('T')[0];
 
-  const [tasks, setTasks] = useState([]);
   const [selectedDate, setSelectedDate] = useState(today);
-  const [dayModal, setDayModal] = useState(false);
+  const [tasks, setTasks] = useState([]);
+  const [isDayModalOpen, setIsDayModalOpen] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('tasks');
@@ -63,8 +63,14 @@ function App() {
 
   function handleDayClick(date) {
     setSelectedDate(date);
-    setDayModal(true);
+    setIsDayModalOpen(true);
   }
+  // Фильтрация задач по дате
+  const tasksForSelectedDate = tasks.filter(
+    (task) => task.createdAt === selectedDate
+  );
+
+  const handleDayModalClose = () => setIsDayModalOpen(false);
 
   return (
     <>
@@ -76,6 +82,9 @@ function App() {
         onDayClick={handleDayClick}
         onToggleComplete={toggleComplete}
         deleteTask={deleteTask}
+        isDayModalOpen={isDayModalOpen}
+        dailyTasks={tasksForSelectedDate}
+        onDayModalClose={handleDayModalClose}
       />
     </>
   );

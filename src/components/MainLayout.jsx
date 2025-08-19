@@ -6,8 +6,12 @@ function MainLayout({
   tasks,
   onAddTask,
   selectedDate,
+  onDayClick,
   onToggleComplete,
   deleteTask,
+  isDayModalOpen,
+  dailyTasks,
+  onDayModalClose,
 }) {
   return (
     <div className="main">
@@ -18,7 +22,12 @@ function MainLayout({
         onToggleComplete={onToggleComplete}
         deleteTask={deleteTask}
       />
-      <RightPart />
+      <RightPart
+        onDayClick={onDayClick}
+        isDayModalOpen={isDayModalOpen}
+        dailyTasks={dailyTasks}
+        onDayModalClose={onDayModalClose}
+      />
     </div>
   );
 }
