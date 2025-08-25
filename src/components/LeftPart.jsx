@@ -7,7 +7,7 @@ function LeftPart({
   onAddTask,
   selectedDate,
   onToggleComplete,
-  deleteTask,
+  onDeleteTask,
 }) {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
@@ -18,7 +18,7 @@ function LeftPart({
   return (
     <div className="leftPart">
       <div className="taskListTitle">
-        <p>Your Tasks</p>
+        <h4>Your Tasks</h4>
       </div>
       <div className="taskListMain">
         <button className="addTask" onClick={handleToggleForm}>
@@ -34,7 +34,7 @@ function LeftPart({
         <TaskList
           tasks={tasks}
           onToggleComplete={onToggleComplete}
-          deleteTask={deleteTask}
+          onDeleteTask={onDeleteTask}
         />
       </div>
     </div>

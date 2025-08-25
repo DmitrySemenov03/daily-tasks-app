@@ -1,30 +1,30 @@
 import React from 'react';
+import { FaTrashCan } from 'react-icons/fa6';
+import { getDaysSpent } from '../utils/getDaysSpent';
 
-function TaskItem({ task, onToggleComplete, deleteTask }) {
+function TaskItem({ task, onToggleComplete, onDeleteTask }) {
   const { title, description, createdAt, isCompleted } = task;
 
-  function getDaysSpent(task) {
-    const start = new Date(task.createdAt);
-    const end = new Date(task.completedAt || new Date());
-    const diff = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
-    return diff;
-  }
-
   return (
-    <li className={`task ${isCompleted ? 'completed' : ''}`}>
-      <input
-        type="checkbox"
-        checked={isCompleted}
-        onChange={() => onToggleComplete(task.id)}
-      />
-      <span>{title}</span>
-      <p>{description}</p>
-      <p className="taskDate">{createdAt}</p>
-      <button className="deleteTask" onClick={() => deleteTask(task.id)}>
-        del
+    <li className={`task task-card ${isCompleted ? 'completed' : ''}`}>
+      <div className="taskTitle">
+        <input
+          type="checkbox"
+          checked={isCompleted}
+          onChange={() => onToggleComplete(task.id)}
+        />
+        <span>{title}</span>
+      </div>
+      <p className="taskDate">{new Date(createdAt).toLocaleDateString()}</p>
+      <button className="deleteTask" onClick={() => onDeleteTask(task.id)}>
+        <FaTrashCan />
       </button>
       {task.isCompleted && (
-        <span className="days-spent">Done in {getDaysSpent(task)} days</span>
+        <div className="taskDone">
+          <small className="days-spent">
+            Done in {getDaysSpent(task)} days
+          </small>
+        </div>
       )}
     </li>
   );

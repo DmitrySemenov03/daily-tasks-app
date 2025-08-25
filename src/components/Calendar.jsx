@@ -9,21 +9,20 @@ function Calendar({
   onDayModalClose,
 }) {
   const monthNames = [
-    'Январь',
-    'Февраль',
-    'Март',
-    'Апрель',
-    'Март',
-    'Май',
-    'Июнь',
-    'Июль',
-    'Август',
-    'Сентябрь',
-    'Октябрь',
-    'Ноябрь',
-    'Декабрь',
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
-  const dayNames = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+  const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   const today = new Date();
   const year = today.getFullYear();
@@ -31,10 +30,11 @@ function Calendar({
 
   return (
     <>
-      <CalendarHeader monthNames={monthNames[month + 1]} year={year} />
+      <CalendarHeader monthNames={monthNames[month]} year={year} />
       <CalendarGrid
         year={year}
         month={month}
+        dayNames={dayNames}
         onDayClick={onDayClick}
         isDayModalOpen={isDayModalOpen}
         dailyTasks={dailyTasks}

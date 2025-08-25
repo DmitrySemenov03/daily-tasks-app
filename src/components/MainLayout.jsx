@@ -8,7 +8,7 @@ function MainLayout({
   selectedDate,
   onDayClick,
   onToggleComplete,
-  deleteTask,
+  onDeleteTask,
   isDayModalOpen,
   dailyTasks,
   onDayModalClose,
@@ -17,12 +17,15 @@ function MainLayout({
     <div className="main">
       <LeftPart
         tasks={tasks}
-        onAddTask={onAddTask}
         selectedDate={selectedDate}
+        onAddTask={onAddTask}
         onToggleComplete={onToggleComplete}
-        deleteTask={deleteTask}
+        onDeleteTask={onDeleteTask}
       />
+
       <RightPart
+        tasks={tasks}
+        selectedDate={selectedDate}
         onDayClick={onDayClick}
         isDayModalOpen={isDayModalOpen}
         dailyTasks={dailyTasks}

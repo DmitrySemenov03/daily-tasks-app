@@ -14,16 +14,12 @@ function TaskForm({ onAddTask, selectedDate, onClose }) {
     }
     setError('');
 
-    const newTask = {
-      id: Date.now(),
+    const taskData = {
       title,
       description,
-      createdAt: new Date().toISOString().split('T')[0],
       dueDate: selectedDate || new Date().toISOString().split('T')[0],
-      isCompleted: false,
-      completedAt: null,
     };
-    onAddTask(newTask);
+    onAddTask(taskData);
 
     setTitle('');
     setDescription('');
@@ -49,10 +45,14 @@ function TaskForm({ onAddTask, selectedDate, onClose }) {
           placeholder="Description"
           className="taskDescription"
         />
-        <button type="submit">Create</button>
-        <button type="button" onClick={onClose}>
-          Cancel
-        </button>
+        <div className="buttons">
+          <button className="create btn" type="submit">
+            Create
+          </button>
+          <button className="cancel btn" type="button" onClick={onClose}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

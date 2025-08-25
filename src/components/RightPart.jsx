@@ -6,10 +6,14 @@ function RightPart({
   isDayModalOpen,
   dailyTasks,
   onDayModalClose,
+  tasks,
+  selectedDate,
 }) {
   return (
     <div className="rightPart">
       <Calendar
+        tasks={tasks}
+        selectedDate={selectedDate}
         onDayClick={onDayClick}
         isDayModalOpen={isDayModalOpen}
         dailyTasks={dailyTasks}

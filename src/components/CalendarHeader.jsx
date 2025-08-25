@@ -4,7 +4,7 @@ function CalendarHeader({ monthNames, year }) {
   return (
     <div className="calendarHeader">
       <h3>
-        {monthNames} {year} года
+        {monthNames}, {year}
       </h3>
     </div>
   );

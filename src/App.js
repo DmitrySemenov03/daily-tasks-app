@@ -55,7 +55,7 @@ function App() {
     });
   };
 
-  const deleteTask = (id) => {
+  const onDeleteTask = (id) => {
     setTasks((prevTasks) => {
       return prevTasks.filter((task) => task.id !== id);
     });
@@ -81,7 +81,7 @@ function App() {
         selectedDate={selectedDate}
         onDayClick={handleDayClick}
         onToggleComplete={toggleComplete}
-        deleteTask={deleteTask}
+        onDeleteTask={onDeleteTask}
         isDayModalOpen={isDayModalOpen}
         dailyTasks={tasksForSelectedDate}
         onDayModalClose={handleDayModalClose}
