@@ -1,17 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import MainLayout from './components/MainLayout';
 import { updateOverdueTasks } from './utils/updateOverdueTasks';
 import { createTask } from './models/task';
+import { useAppTheme } from './hooks/useAppTheme';
+import logo from './images/logo.png';
 
 function App() {
   const today = new Date().toISOString().split('T')[0];
 
+  const { theme, toggleTheme } = useAppTheme('dark');
   const [selectedDate, setSelectedDate] = useState(today);
   const [tasks, setTasks] = useState([]);
   const [isDayModalOpen, setIsDayModalOpen] = useState(false);
 
+  // загрузка из localstorage
   useEffect(() => {
     const saved = localStorage.getItem('tasks');
     if (saved) {
@@ -33,13 +37,13 @@ function App() {
   }, []);
 
   // Добавление задачи
-  function addTask(taskData) {
+  const addTask = useCallback((taskData) => {
     const newTask = createTask(taskData);
     setTasks((prev) => [...prev, newTask]);
-  }
+  }, []);
 
   // Флаг выполнения задачи
-  const toggleComplete = (id) => {
+  const toggleComplete = useCallback((id) => {
     setTasks((prevTasks) => {
       return prevTasks.map((task) =>
         task.id === id
@@ -53,28 +57,32 @@ function App() {
           : task
       );
     });
-  };
+  }, []);
 
-  const onDeleteTask = (id) => {
+  const onDeleteTask = useCallback((id) => {
     setTasks((prevTasks) => {
       return prevTasks.filter((task) => task.id !== id);
     });
-  };
+  }, []);
 
-  function handleDayClick(date) {
+  const handleDayClick = useCallback((date) => {
     setSelectedDate(date);
     setIsDayModalOpen(true);
-  }
-  // Фильтрация задач по дате
-  const tasksForSelectedDate = tasks.filter(
-    (task) => task.createdAt === selectedDate
-  );
+  }, []);
 
-  const handleDayModalClose = () => setIsDayModalOpen(false);
+  // Фильтрация задач по дате
+  const tasksForSelectedDate = useMemo(() => {
+    return tasks.filter(
+      (task) => task.createdAt === selectedDate,
+      [tasks, selectedDate]
+    );
+  });
+
+  const handleDayModalClose = useCallback(() => setIsDayModalOpen(false), []);
 
   return (
     <>
-      <Header />
+      <Header logo={logo} onToggleTheme={toggleTheme} theme={theme} />
       <MainLayout
         tasks={tasks}
         onAddTask={addTask}

@@ -1,4 +1,3 @@
-import React from 'react';
 import { getDaysSpent } from '../utils/getDaysSpent';
 
 function DayDetailsModal({ isOpen, selectedDate, tasks, onClose }) {

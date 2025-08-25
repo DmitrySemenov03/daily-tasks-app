@@ -3,7 +3,7 @@ import { FaTrashCan } from 'react-icons/fa6';
 import { getDaysSpent } from '../utils/getDaysSpent';
 
 function TaskItem({ task, onToggleComplete, onDeleteTask }) {
-  const { title, description, createdAt, isCompleted } = task;
+  const { title, createdAt, isCompleted } = task;
 
   return (
     <li className={`task task-card ${isCompleted ? 'completed' : ''}`}>
@@ -30,4 +30,4 @@ function TaskItem({ task, onToggleComplete, onDeleteTask }) {
   );
 }
 
-export default TaskItem;
+export default React.memo(TaskItem);
